@@ -8,7 +8,7 @@ const Navbar = () => {
   ];
   return (
     <nav className="navbar">
-      <h1>Bookstore</h1>
+      <h1>Bookstore CMS</h1>
       <ul className="nav-links">
         {links.map((link) => (
           <li key={link.name}><NavLink to={link.path}>{link.name}</NavLink></li>

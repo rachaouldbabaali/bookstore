@@ -41,7 +41,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **  **
+- **User can:**
+-Display a list of books
+-Add a book
+-Remove a selected book
 
 
 
