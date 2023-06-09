@@ -23,7 +23,7 @@
 
 # 📖 BookStore <a name="about-project"></a>
 
-**BookStore** 
+**BookStore** This project that we build is based on a website allowing users to add/remove books from a list in real time.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -79,7 +79,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:rachaouldbabaali/todo-react-app.git
+  git clone git@github.com:rachaouldbabaali/bookstore.git
 ```
 
 ### Install
@@ -88,7 +88,7 @@ Install this project with:
 
 
 ```sh
-  cd To-do_list
+  cd bookstore
   npm install
 ```
 
@@ -120,10 +120,7 @@ To use this project on the `index.html` file with your prefered browser
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] **Sorting tasks by priority**
-- [ ] **Sorting tasks due date**
-- [ ] **Setting reminders for tasks**
-- [ ] **Syncing the list across multiple devices**
+- [ ] **New style in the making**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -133,7 +130,7 @@ To use this project on the `index.html` file with your prefered browser
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/rachaouldbabaali/todo-react-app/issues).
+Feel free to check the [issues page](https://github.com/rachaouldbabaali/bookstore/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -156,7 +153,7 @@ I would like to thank Microverse team, coding partners for the amazing collobrat
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/rachaouldbabaali/todo-react-app/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/rachaouldbabaali/bookstore/blob/main/LICENSE) licensed.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
