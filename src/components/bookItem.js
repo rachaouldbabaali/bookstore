@@ -1,19 +1,23 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/booksSlice';
+import { fetchBooks, removeBook } from '../redux/books/booksSlice';
 
 const BookItem = ({ book }) => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
   return (
     <div className="book-item">
-      <div className="book-item__title">{JSON.parse(book).title}</div>
-      <div className="book-item__author">{JSON.parse(book).author}</div>
+      <div className="book-item__title">{book.title}</div>
+      <div className="book-item__author">{book.author}</div>
       <button
         type="button"
         className="book-item__remove"
-        id={JSON.parse(book).id}
-        onClick={(e) => dispatch(removeBook(e.target.id))}
+        onClick={() => dispatch(removeBook(book.id))}
       >
         Remove
       </button>
@@ -22,7 +26,13 @@ const BookItem = ({ book }) => {
 };
 
 BookItem.propTypes = {
-  book: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default BookItem;
