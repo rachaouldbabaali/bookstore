@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable guard-for-in */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -11,7 +13,13 @@ export const createApp = createAsyncThunk('books/createApp', async () => {
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async (book, thunkAPI) => {
   try {
     const resp = await axios.get(`${API_BASE_URL}/books`);
-    return resp.data;
+    const booksDic = resp.data;
+    const booksArray = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in booksDic) {
+      booksArray.push({ ...booksDic[key][0], id: key });
+    }
+    return booksArray;
   } catch (error) {
     return thunkAPI.rejectWithValue('something went wrong');
   }
@@ -19,13 +27,11 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (book, thun
 
 export const createBook = createAsyncThunk('books/createBook', async (book) => {
   const response = await axios.post(`${API_BASE_URL}/books}`, book);
-  return response;
+  return response.data;
 });
 
 export const removeBook = createAsyncThunk('books/removeBook', async (id) => {
-  const response = await axios.delete(`${API_BASE_URL}/books/${id}`);
-  delete response.headers;
-  return response;
+  await axios.delete(`${API_BASE_URL}/books/${id}`);
 });
 
 export const filterBooks = createAsyncThunk('books/filterBooks', async (category) => {
@@ -45,9 +51,6 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       state.books.push(action.payload);
-    },
-    removeBook: (state, action) => {
-      state.books = state.books.filter((book) => book.item_id !== action.payload);
     },
   },
   extraReducers: {
@@ -75,6 +78,10 @@ const booksSlice = createSlice({
     },
     [removeBook.pending]: (state) => {
       state.isLoading = true;
+    },
+    [removeBook.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.books = state.books.filter((book) => book.id !== action.payload);
     },
     [removeBook.rejected]: (state, action) => {
       state.isLoading = false;

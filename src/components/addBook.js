@@ -45,6 +45,10 @@ const AddBook = () => {
       // eslint-disable-next-line no-console
       console.error(error);
     }
+    dispatch(fetchBooks());
+    setTitle('');
+    setCategory('');
+    setAuthor('');
   };
 
   return (
@@ -60,7 +64,7 @@ const AddBook = () => {
         ))}
       </select>
       <input onChange={(e) => setAuthor(e.target.value)} type="name" placeholder="Author" value={author} />
-      <button type="submit" onClick={handleAddBook}>
+      <button type="button" onClick={handleAddBook}>
         Add Book
       </button>
     </form>
