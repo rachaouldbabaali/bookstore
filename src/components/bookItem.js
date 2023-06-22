@@ -8,18 +8,19 @@
 import { useDispatch } from 'react-redux';
 import { removeBook, fetchBooks } from '../redux/books/booksSlice';
 
-const BookItem = ({ books, id }) => {
+const BookItem = ({ books }) => {
   const dispatch = useDispatch();
 
   const handleRemoveBook = async (e) => {
     e.preventDefault();
+    console.log(e.target.id);
     try {
-      dispatch(removeBook(books.id));
-      dispatch(fetchBooks());
+      dispatch(removeBook(e.target.id));
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
     }
+    dispatch(fetchBooks());
   };
 
   return (
@@ -34,9 +35,9 @@ const BookItem = ({ books, id }) => {
               Comments
             </button>
             <button
-              type="button"
+              type="submit"
               className="book-item__remove"
-              id={id}
+              id={book.id}
               onClick={handleRemoveBook}
             >
               Remove
