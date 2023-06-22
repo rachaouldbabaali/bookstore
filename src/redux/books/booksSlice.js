@@ -8,14 +8,12 @@ export const createApp = createAsyncThunk('books/createApp', async () => {
   return response;
 });
 
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAPI) => {
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async (book, thunkAPI) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/books`);
-    let { books } = thunkAPI.getState().books;
-    books = response.data;
-    return books;
+    const resp = await axios.get(`${API_BASE_URL}/books`);
+    return resp.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue('something went wrong');
   }
 });
 
@@ -26,6 +24,7 @@ export const createBook = createAsyncThunk('books/createBook', async (book) => {
 
 export const removeBook = createAsyncThunk('books/removeBook', async (id) => {
   const response = await axios.delete(`${API_BASE_URL}/books/${id}`);
+  delete response.headers;
   return response;
 });
 
@@ -53,19 +52,33 @@ const booksSlice = createSlice({
   },
   extraReducers: {
     [fetchBooks.pending]: (state) => {
-      const newState = state;
-      newState.books = [];
-      return newState;
+      state.isLoading = true;
     },
     [fetchBooks.fulfilled]: (state, action) => {
-      const newState = state;
-      newState.books = action.payload;
-      return newState;
+      state.isLoading = false;
+      state.books = action.payload;
     },
     [fetchBooks.rejected]: (state, action) => {
-      const newState = state;
-      newState.books = action.payload;
-      return newState;
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
+    [createBook.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [createBook.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.books.push(action.payload);
+    },
+    [createBook.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    },
+    [removeBook.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [removeBook.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
     },
   },
 });

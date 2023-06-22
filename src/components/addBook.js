@@ -17,9 +17,8 @@ const AddBook = () => {
 
   const handleAddBook = async (e) => {
     e.preventDefault();
-    console.log('add book');
     const newBook = {
-      id: uuidv4(),
+      item_id: uuidv4(),
       title,
       category,
       author,
@@ -42,7 +41,6 @@ const AddBook = () => {
 
       dispatch(addBook(data));
       dispatch(createBook(data));
-      console.log(data);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
