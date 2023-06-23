@@ -1,0 +1,8 @@
+.books-list-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 2.375rem;
+}
