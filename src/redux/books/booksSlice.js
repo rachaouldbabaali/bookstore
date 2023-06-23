@@ -32,6 +32,7 @@ export const createBook = createAsyncThunk('books/createBook', async (book) => {
 
 export const removeBook = createAsyncThunk('books/removeBook', async (id) => {
   await axios.delete(`${API_BASE_URL}/books/${id}`);
+  return id;
 });
 
 export const filterBooks = createAsyncThunk('books/filterBooks', async (category) => {
