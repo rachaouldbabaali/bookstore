@@ -1,11 +1,5 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable prefer-const */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable react/prop-types */
-/* eslint-disable camelcase */
-// import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { removeBook, fetchBooks } from '../redux/books/booksSlice';
 
 const BookItem = ({ books }) => {
@@ -13,11 +7,9 @@ const BookItem = ({ books }) => {
 
   const handleRemoveBook = async (e) => {
     e.preventDefault();
-    console.log(e.target.id);
     try {
       dispatch(removeBook(e.target.id));
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
     }
     dispatch(fetchBooks());
@@ -26,7 +18,7 @@ const BookItem = ({ books }) => {
   return (
     <div className="book-item-wrap">
       {books.map((book) => (
-        <div className="book-details">
+        <div className="book-details" key={book.id}>
           <div className="book-item__title">{book.title}</div>
           <div className="book-item__category">{book.category}</div>
           <div className="book-item__author">{book.author}</div>
@@ -64,6 +56,17 @@ const BookItem = ({ books }) => {
       </div>
     </div>
   );
+};
+
+BookItem.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default BookItem;

@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable guard-for-in */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -14,11 +12,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (book, thun
   try {
     const resp = await axios.get(`${API_BASE_URL}/books`);
     const booksDic = resp.data;
-    const booksArray = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in booksDic) {
-      booksArray.push({ ...booksDic[key][0], id: key });
-    }
+    const booksArray = Object.keys(booksDic).map((key) => ({ ...booksDic[key][0], id: key }));
     return booksArray;
   } catch (error) {
     return thunkAPI.rejectWithValue('something went wrong');
