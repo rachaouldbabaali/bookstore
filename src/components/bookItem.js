@@ -55,8 +55,8 @@ const BookItem = ({ books }) => {
       <div className="book-item__progress">
         <div className="progress-title">CURRENT CHAPTER</div>
         <div className="progress-details">
-          Chapter
-          {getRandomChapter}
+          Chapter...
+          {getRandomChapter()}
         </div>
         <button type="button" className="progress-update">
           UPDATE PROGRESS

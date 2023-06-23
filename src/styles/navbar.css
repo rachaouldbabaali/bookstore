@@ -17,6 +17,7 @@ a {
   font-size: 1.875rem;
   font-weight: bold;
   color: #0290ff;
+  margin-left: 3.25rem;
 }
 
 .nav-links {
@@ -47,7 +48,8 @@ a {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+  src:
+    url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
     format("woff2");
 }
 
@@ -76,4 +78,5 @@ a {
   border-radius: 50%;
   border: solid 1px #e8e8e8;
   background-color: white;
+  margin-right: 2.9rem;
 }
