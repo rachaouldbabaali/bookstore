@@ -1,43 +1,82 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f8f8;
-  padding: 1rem;
+a {
+  text-decoration: none;
 }
 
-.navbar h1 {
-  font-size: 2rem;
-  margin: 0;
+.nav-bar {
+  padding: 24px 4%;
+  margin-bottom: 2.5rem;
+  background-color: white;
+  border-bottom: solid 1px #e8e8e8;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-brand {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #0290ff;
+  margin-left: 3.25rem;
 }
 
 .nav-links {
   display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  flex-grow: 1;
+  list-style-type: none;
+  gap: 40px;
 }
 
-.nav-links li {
-  margin-right: 1rem;
+.nav-link {
+  opacity: 0.5;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.813rem;
+  color: #121212;
+  letter-spacing: 1.9px;
 }
 
-.nav-links li:last-child {
-  margin-right: 0;
+.active-link {
+  opacity: 1;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: color 0.2s ease-in-out;
-  padding-bottom: 0.25rem;
-  border-bottom: 2px solid transparent;
+.active {
+  opacity: 1;
+  font-weight: 600;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: #f1356d;
-  border-bottom-color: #f1356d;
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+}
+
+.material-icons {
+  font-family: "Material Icons", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}
+
+.primary-color {
+  color: #0290ff;
+}
+
+.icon-button {
+  cursor: pointer;
+  width: 2.813rem;
+  height: 2.813rem;
+  border-radius: 50%;
+  border: solid 1px #e8e8e8;
+  background-color: white;
+  margin-right: 2.9rem;
 }
