@@ -52,7 +52,7 @@
 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-[BookStore App](https://booksstore-racha.onrender.com)
+[BookStore App](https://phenomenal-zuccutto-ecc701.netlify.app/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
